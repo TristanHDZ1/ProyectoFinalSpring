@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{barca/principio :: head}">
+    <meta charset="UTF-8" />
+    <title>Eliminar Futbolista - Barça</title>
+</head>
+<body class="bg-white text-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(45deg, #004D98, #A50044);">
+    <div class="container-fluid">
+        <!-- Marca del sitio -->
+        <a class="navbar-brand text-white fw-bold fs-4" href="/" style="letter-spacing: 1px;">
+            Pagina Principal
+        </a>
+
+        <!-- Botón hamburguesa -->
+        <button
+                class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces del navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto fw-semibold fs-5">
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/principal">Inicio</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/equipo">Futbolistas</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/nuevo">Nuevo Futbolista</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Confirmación de eliminación -->
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card text-white shadow-lg border-0" style="background-color: #0A1E52; border-radius: 1rem;">
+                <div class="card-body text-center">
+
+                    <h3 class="fw-bold mb-3" style="letter-spacing: 1px;">
+                        ¿Estás seguro que deseas eliminar a:
+                    </h3>
+
+                    <h4 class="text-warning fw-semibold mb-4" th:text="${futbolista.nombre}">Nombre</h4>
+
+                    <div class="mb-4">
+                        <img th:src="${futbolista.imagen}" alt="Imagen del futbolista"
+                             class="rounded shadow-sm"
+                             style="max-height: 200px; object-fit: contain;">
+                    </div>
+
+                    <form th:action="@{'/barca/eliminar/' + ${futbolista.id}}" method="post">
+
+                        <div class="d-flex justify-content-center gap-3">
+                            <!-- Cancelar -->
+                            <a href="/barca/home"
+                               class="btn fw-bold text-white"
+                               style="background-color: #004D98;"
+                               onmouseover="this.style.backgroundColor='#002a5c'"
+                               onmouseout="this.style.backgroundColor='#004D98'">
+                                Cancelar
+                            </a>
+
+                            <!-- Confirmar eliminación -->
+                            <button type="submit"
+                                    class="btn fw-bold text-white"
+                                    style="background-color: #A50044;"
+                                    onmouseover="this.style.backgroundColor='#8a0037'"
+                                    onmouseout="this.style.backgroundColor='#A50044'">
+                                Eliminar
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer
+        class="mt-auto text-center py-3"
+        style="background: linear-gradient(45deg, #A50044, #004D98); color: #fff;"
+>
+    &copy; 2025 Temas Especiales, Bruno. Todos los derechos reservados.
+</footer>
+
+<div th:replace="~{barca/principio :: jsincludes}"></div>
+</body>
+</html>

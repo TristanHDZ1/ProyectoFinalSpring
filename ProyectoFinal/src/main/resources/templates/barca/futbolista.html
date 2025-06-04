@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{barca/principio :: head}">
+    <meta charset="UTF-8">
+    <title>Futbolista</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(45deg, #004D98, #A50044);">
+    <div class="container-fluid">
+        <!-- Marca del sitio -->
+        <a class="navbar-brand text-white fw-bold fs-4" href="/" style="letter-spacing: 1px;">
+            Pagina Principal
+        </a>
+
+        <!-- Botón hamburguesa -->
+        <button
+                class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces del navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto fw-semibold fs-5">
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/principio">Inicio</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/equipo">Futbolistas</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/nuevo">Nuevo Futbolista</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <!-- Mensaje de éxito -->
+            <div th:if="${param.exito}" class="alert text-white text-center fw-bold shadow-sm border-0" role="alert"
+                 style="background: linear-gradient(to right, #A50044, #004D98);">
+                ¡Futbolista actualizado exitosamente!
+            </div>
+
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-lg border-0" style="background-color: #0A1E52; color: white; border-radius: 16px;">
+
+                    <!-- Imagen -->
+                    <div class="text-center py-3">
+                        <img th:src="${futbolista.imagen}"
+                             class="rounded"
+                             style="max-height: 200px; max-width: 100%; object-fit: contain;"
+                             alt="Imagen del futbolista">
+                    </div>
+
+                    <!-- Cuerpo de la tarjeta -->
+                    <div class="card-body text-center">
+                        <h3 class="card-title mb-2 fw-bold" th:text="${futbolista.nombre}">Nombre del Futbolista</h3>
+                        <p class="mb-1" th:text="'Pierna hábil: ' + ${futbolista.pierna}">Pierna</p>
+                        <p class="mb-4" th:text="'Edad: ' + ${futbolista.edad}">Edad</p>
+
+                        <!-- Botones personalizados -->
+                        <div class="d-flex justify-content-center gap-3">
+                            <!-- Botón Editar estilo Barça -->
+                            <a th:href="@{'/barca/actualizar/' + ${futbolista.id}}"
+                               class="btn fw-semibold text-white shadow-sm"
+                               style="background-color: #A50044; letter-spacing: 1px;"
+                               onmouseover="this.style.backgroundColor='#8a0037'"
+                               onmouseout="this.style.backgroundColor='#A50044'">
+                                Editar
+                            </a>
+
+                            <!-- Botón Eliminar estilo Barça oscuro -->
+                            <a th:href="@{'/barca/eliminar/' + ${futbolista.id}}"
+                               class="btn fw-semibold text-white shadow-sm"
+                               style="background-color: #004D98; letter-spacing: 1px;"
+                               onmouseover="this.style.backgroundColor='#002a5c'"
+                               onmouseout="this.style.backgroundColor='#004D98'">
+                                Eliminar
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer
+        class="mt-auto text-center py-3"
+        style="background: linear-gradient(45deg, #A50044, #004D98); color: #fff;"
+>
+    &copy; 2025 Temas Especiales, Bruno. Todos los derechos reservados.
+</footer>
+
+<!-- Scripts -->
+<div th:replace="~{barca/principio :: jsincludes}"></div>
+
+</body>
+</html>

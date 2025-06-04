@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{barca/principio :: head}">
+    <meta charset="UTF-8">
+    <title>Fubolistas del BARCA</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(45deg, #004D98, #A50044);">
+    <div class="container-fluid">
+        <!-- Marca del sitio -->
+        <a class="navbar-brand text-white fw-bold fs-4" href="/" style="letter-spacing: 1px;">
+            Pagina Principal
+        </a>
+
+        <!-- Botón hamburguesa -->
+        <button
+                class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Enlaces del navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto fw-semibold fs-5">
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/principio">Inicio</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/equipo">Futbolistas</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link text-white position-relative link-hover" href="/barca/nuevo">Nuevo Futbolista</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-fill">
+    <div class="container py-5">
+        <!-- Mensaje de éxito -->
+        <div th:if="${param.exito}" class="alert text-white text-center fw-bold shadow-sm border-0" role="alert"
+             style="background: linear-gradient(to right, #A50044, #004D98);">
+            ¡Futbolista dado de alta exitosamente!
+        </div>
+        <!-- Mensaje de éxito -->
+        <div th:if="${param.eliminado}" class="alert text-white text-center fw-bold shadow-sm border-0" role="alert"
+             style="background: linear-gradient(to right, #A50044, #004D98);">
+            Futbolista Eliminado exitosamente :c
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4" th:each="futbolistaNuevo : ${futbolista}">
+                <div class="card h-100 border-0 shadow" style="background-color: #0A1E52; color: white;">
+                    <div style="height: 280px; overflow: hidden;">
+                        <img th:src="${futbolistaNuevo.imagen}"
+                             class="card-img-top img-fluid"
+                             alt="Imagen del futbolista"
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body text-center d-flex flex-column">
+                        <h5 class="card-title" th:text="${futbolistaNuevo.nombre}">Nombre</h5>
+                        <p class="card-text mb-1" th:text="'Edad: ' + ${futbolistaNuevo.edad}">Edad</p>
+                        <p class="card-text" th:text="${futbolistaNuevo.descripcion}"></p>
+                        <div class="mt-auto">
+                            <a th:href="@{'/barca/futbolista/' + ${futbolistaNuevo.id}}"
+                               class="btn w-100"
+                               style="background-color: #A50044; border-color: #A50044;">
+                                Ver Perfil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- Footer -->
+<footer
+        class="mt-auto text-center py-3"
+        style="background: linear-gradient(45deg, #A50044, #004D98); color: #fff;"
+>
+    &copy; 2025 Temas Especiales, Bruno. Todos los derechos reservados.
+</footer>
+
+
+<!-- Scripts (fragmento) -->
+<div th:replace="~{barca/principio :: jsincludes}"></div>
+
+</body>
+</html>

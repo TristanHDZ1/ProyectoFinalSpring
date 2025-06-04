@@ -1,0 +1,97 @@
+body.modo-oscuro {
+    background-color: #0b0b0b;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* NAV */
+.nav-wrapper a {
+    color: #fff !important;
+}
+.nav-content .nav-title {
+    color: #4dd0e1;
+}
+
+/* CONTENIDO */
+.contenido-principal {
+    padding: 60px 0;
+}
+.texto-bienvenida h1 {
+    color: #00acc1;
+    font-size: 2.8rem;
+}
+.imagen-principal {
+    animation: fadeInUp 2s ease-in-out;
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* VENTAJAS */
+.seccion {
+    padding: 60px 0;
+}
+.animate-box {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* GALERÍA */
+.dark-section {
+    background-color: #111;
+}
+.img-hover img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.4s ease-in-out;
+}
+.img-hover img:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+/* EQUIPO */
+.equipo-card {
+    margin-bottom: 40px;
+}
+.circle-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #00e676;
+    box-shadow: 0 0 15px #00e67688;
+    transition: transform 0.3s ease-in-out;
+}
+.circle-img:hover {
+    transform: scale(1.1);
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* TECNOLOGÍAS - Fila fija sin scroll */
+.barra-tecnologias {
+    background-color: #111;
+    padding: 30px 0;
+    text-align: center;
+}
+.barra-tecnologias img {
+    height: 60px;
+    margin: 0 20px;
+    filter: drop-shadow(2px 2px 5px #00e676);
+    transition: transform 0.3s ease-in-out;
+}
+.barra-tecnologias img:hover {
+    transform: scale(1.3);
+}
+
+/* FOOTER */
+footer {
+    padding: 20px 0;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{barca/principio :: head}">
+  <meta charset="UTF-8" />
+  <title>Actualizar Futbolista - Barça</title>
+</head>
+<body class="bg-white text-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(45deg, #004D98, #A50044);">
+  <div class="container-fluid">
+    <!-- Marca del sitio -->
+    <a class="navbar-brand text-white fw-bold fs-4" href="/" style="letter-spacing: 1px;">
+      Pagina Principal
+    </a>
+
+    <!-- Botón hamburguesa -->
+    <button
+            class="navbar-toggler bg-light"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Enlaces del navbar -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto fw-semibold fs-5">
+        <li class="nav-item px-2">
+          <a class="nav-link text-white position-relative link-hover" href="/barca/principio">Inicio</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link text-white position-relative link-hover" href="/barca/equipo">Futbolistas</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link text-white position-relative link-hover" href="/barca/nuevo">Nuevo Futbolista</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div th:if="${error}" class="alert alert-danger text-center fw-bold shadow-sm" role="alert">
+        <span th:text="${error}"></span>
+      </div>
+
+      <div class="card shadow rounded border-0">
+        <div class="card-body p-4" style="background-color: #004D98;">
+          <h2 class="card-title text-white text-center fw-bold mb-4" style="letter-spacing: 2px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            ACTUALIZAR FUTBOLISTA
+          </h2>
+
+          <form th:action="@{'/barca/actualizar/' + ${futbolista.id}}" th:object="${futbolista}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="mb-4">
+              <label for="nombre" class="form-label text-white fw-semibold">Nombre</label>
+              <input type="text" id="nombre" th:field="*{nombre}" class="form-control border border-primary" required placeholder="Ej: Lionel Messi" style="color: #004D98;">
+
+            </div>
+
+            <div class="mb-4">
+              <label for="pierna" class="form-label text-white fw-semibold">Pierna hábil</label>
+              <select id="pierna" th:field="*{pierna}" class="form-select border border-primary text-dark" required>
+                <option value="Zurda">Zurda</option>
+                <option value="Derecha">Derecha</option>
+                <option value="Diestro">Diestro</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="edad" class="form-label text-white fw-semibold">Edad</label>
+              <input type="number" id="edad" th:field="*{edad}" class="form-control border border-primary" min="0" required placeholder="Ej: 34" style="color: #004D98;">
+            </div>
+
+            <div class="mb-4">
+              <label for="descripcion" class="form-label text-white fw-semibold">Descripción</label>
+              <textarea id="descripcion" th:field="*{descripcion}" rows="3" class="form-control border border-primary text-dark" placeholder="Descripción breve del futbolista"></textarea>
+            </div>
+
+            <div class="mb-5">
+              <label for="imagen" class="form-label text-white fw-semibold">URL de Imagen</label>
+              <input type="text" id="imagen" th:field="*{imagen}" class="form-control border border-primary" placeholder="https://ejemplo.com/imagen.jpg" style="color: #004D98;">
+            </div>
+
+            <button type="submit" class="btn fw-bold w-100 shadow-sm" style="letter-spacing: 1.5px; color: #ffffff; background-color: #A50044;">
+              ACTUALIZAR
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer
+        class="mt-auto text-center py-3"
+        style="background: linear-gradient(45deg, #A50044, #004D98); color: #fff;"
+>
+  &copy; 2025 Temas Especiales, Bruno. Todos los derechos reservados.
+</footer>
+
+<div th:replace="~{barca/principio :: jsincludes}"></div>
+</body>
+</html>
