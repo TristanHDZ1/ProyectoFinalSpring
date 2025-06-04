@@ -1,4 +1,4 @@
-package mx.unam.aragon.ProyectoFinal.Models;
+package mx.unam.aragon.ProyectoFinal.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
