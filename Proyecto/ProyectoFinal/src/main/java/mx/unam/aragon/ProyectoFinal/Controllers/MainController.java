@@ -1,4 +1,4 @@
-package mx.unam.aragon.ProyectoFinal.Models;
+package mx.unam.aragon.ProyectoFinal.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/home/")
 public class MainController {
-    
+
 
     @GetMapping("/Principal/")
     public String Principal() {

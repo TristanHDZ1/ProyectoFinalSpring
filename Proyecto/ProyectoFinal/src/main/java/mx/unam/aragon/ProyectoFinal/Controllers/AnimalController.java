@@ -18,14 +18,14 @@ public class AnimalController {
 
     @GetMapping
     public String listarAnimales(Model model) {
-        model.addAttribute("animalesList", animalRepository.findAll());
-        return "animales/listaanimales";
+        model.addAttribute("listaAnimales", animalRepository.findAll());
+        return "animales/listaAnimales";
     }
 
     @GetMapping("/nuevo")
     public String mostrarFormularioNuevo(Model model) {
         model.addAttribute("animal", new Animal());
-        return "animales/formanimal";
+        return "animales/formAnimales";
     }
 
     @PostMapping("/guardar")
@@ -38,7 +38,7 @@ public class AnimalController {
     public String editarAnimal(@PathVariable Long id, Model model) {
         Animal animal = animalRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
         model.addAttribute("animal", animal);
-        return "animales/formanimal";
+        return "animales/formAnimales";
     }
 
     @GetMapping("/eliminar/{id}")
