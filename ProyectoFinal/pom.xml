@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>mx.unam.aragon.ico.te</groupId>
-	<artifactId>FutbolistaMvc</artifactId>
+	<artifactId>ProyectoFinal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>futbolistaMvc</name>
 	<description>Proyecto de futbol MVC</description>

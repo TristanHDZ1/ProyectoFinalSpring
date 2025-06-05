@@ -4,6 +4,7 @@ import mx.unam.aragon.ProyectoFinal.entities.Futbolista;
 import mx.unam.aragon.ProyectoFinal.services.FutbolistaService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,11 +44,22 @@ public class FutbolistaController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Futbolista futbolista) {
+    public String guardar(@ModelAttribute Futbolista futbolista, Model model) {
         LoggerFactory.getLogger(getClass()).info("Guardando Futbolista: " + futbolista);
-        futbolistaService.guardarFutbolista(futbolista);
-        return "redirect:/barca/equipo?exito";
+        try {
+            futbolistaService.guardarFutbolista(futbolista);
+            return "redirect:/barca/equipo?exito";
+        } catch (DataIntegrityViolationException ex) {
+            model.addAttribute("futbolista", futbolista);
+            model.addAttribute("error", "El campo 'imagen' es demasiado largo. Intenta con una URL más corta.");
+            return "barca/formFutbolista";
+        } catch (Exception ex) {
+            model.addAttribute("futbolista", futbolista);
+            model.addAttribute("error", "Ocurrió un error inesperado al guardar.");
+            return "barca/formFutbolista";
+        }
     }
+
 
     @GetMapping("/futbolista/{id}")
     public String futbolista(@PathVariable Integer id, Model model) {
@@ -65,13 +77,23 @@ public class FutbolistaController {
     public String actualizar(@PathVariable Integer id,
                              @ModelAttribute Futbolista futbolista,
                              Model model) {
-        boolean actualizado = futbolistaService.updateFutbolista(id, futbolista);
-        if (actualizado) {
+        try {
+            boolean actualizado = futbolistaService.updateFutbolista(id, futbolista);
+            if (actualizado) {
+                return "redirect:/barca/futbolista/" + id + "?exito";
+            } else {
+                model.addAttribute("futbolista", futbolista);
+                model.addAttribute("error", "No se pudo actualizar el futbolista.");
+                return "barca/formActualizarFutbolista";
+            }
+        } catch (DataIntegrityViolationException ex) {
             model.addAttribute("futbolista", futbolista);
-            return "redirect:/barca/futbolista/{id}?exito"; // o redirige a una página de éxito
-        } else {
-            model.addAttribute("error", "No se pudo actualizar");
-            return "errorPage";
+            model.addAttribute("error", "El campo 'imagen' es demasiado largo. Intenta con una URL más corta.");
+            return "barca/formActualizarFutbolista";
+        } catch (Exception ex) {
+            model.addAttribute("futbolista", futbolista);
+            model.addAttribute("error", "Ocurrió un error inesperado al actualizar.");
+            return "barca/formActualizarFutbolista";
         }
     }
 
