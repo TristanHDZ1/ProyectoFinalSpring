@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planetario · Como Framer</title>
+
+    <!-- Fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- GSAP y ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <!-- JS propio -->
+    <script src="/script.js" defer></script>
+</head>
+<body>
+<!-- =========================== -->
+<!-- HEADER -->
+<!-- =========================== -->
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">Planetario</div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/">Inicio</a></li>
+                <li class="nav-item"><a href="#features">Características</a></li>
+                <li class="nav-item"><a href="#video">Vídeo</a></li>
+                <li class="nav-item"><a href="#planets">Planetas</a></li>
+                <li class="nav-item"><a href="/home/TablaPlanetas/">Tabla</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- =========================== -->
+<!-- HERO -->
+<!-- =========================== -->
+<section class="hero" id="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">Explora el Universo</h1>
+            <p class="hero-subtitle">
+                Sumérgete en un viaje fascinante: explora información detallada, contempla imágenes sorprendentes y disfruta de animaciones interactivas que dan vida a cada planeta.
+            </p>
+
+
+
+        </div>
+        <div class="hero-graphic">
+            <img
+                    src="https://cdn.pixabay.com/animation/2024/06/09/13/36/13-36-19-959_512.gif"
+                    alt="Planeta Flotante"
+                    class="planet-float"
+            />
+        </div>
+    </div>
+</section>
+
+<!-- =========================== -->
+<!-- FEATURES -->
+<!-- =========================== -->
+<section class="features" id="features">
+    <div class="container">
+        <h2 class="section-title">¿Por qué Planetario?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/8541/8541903.png" alt="Datos Reales" />
+                </div>
+                <h3 class="feature-title">Datos Reales</h3>
+                <p class="feature-text">
+                    Información actualizada sobre cada planeta, obtenida de fuentes confiables.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5376/5376344.png" alt="Animaciones 3D" />
+                </div>
+                <h3 class="feature-title">Animaciones 3D</h3>
+                <p class="feature-text">
+                    Modelos giratorios y efectos interactivos para entender cada mundo.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/17323/17323160.png" alt="Interactividad" />
+                </div>
+                <h3 class="feature-title">Interactividad</h3>
+                <p class="feature-text">
+                    Scroll suave y efectos al entrar en pantalla para una experiencia inmersiva.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================== -->
+<!-- VIDEO DESTACADO -->
+<!-- =========================== -->
+<section class="video-section" id="video">
+    <div class="container">
+        <h2 class="section-title">Vídeo Destacado</h2>
+        <div class="video-wrapper">
+            <div class="youtube-wrapper">
+                <iframe
+                        src="https://www.youtube.com/embed/_Sl8diqCAFw"
+                        title="Vídeo Destacado"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================== -->
+<!-- PLANETS (SECCIÓN REVISADA) -->
+<!-- =========================== -->
+<section class="planets" id="planets">
+    <div class="container">
+        <h2 class="section-title">Nuestros Planetas</h2>
+
+        <!-- Opcional: pequeño subtítulo o descripción -->
+        <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem; color: #555;">
+            Conoce las características más llamativas de cada mundo de nuestro sistema solar.
+        </p>
+
+        <div class="planet-grid">
+            <!-- Mercurio -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://cdn.pixabay.com/photo/2021/04/05/15/44/mercury-6153848_1280.png"
+                            alt="Mercurio"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Mercurio</h3>
+                    <p class="planet-description">
+                        El planeta más cercano al Sol, con temperaturas extremas y superficie repleta de cráteres.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Venus -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/media/images/Venus_cropped_transparent.png?itok=xjHy67im"
+                            alt="Venus"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Venus</h3>
+                    <p class="planet-description">
+                        El planeta más brillante en nuestro cielo nocturno. Atmósfera densa y efecto invernadero extremo.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Tierra -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://cdn.pixabay.com/photo/2016/04/24/05/16/world-1348808__340.png"
+                            alt="Tierra"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Tierra</h3>
+                    <p class="planet-description">
+                        Nuestro hogar, único planeta conocido con vida y abundante agua líquida.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Marte -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://static.vecteezy.com/system/resources/previews/009/381/516/non_2x/red-moon-for-halloween-design-elements-free-png.png"
+                            alt="Marte"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Marte</h3>
+                    <p class="planet-description">
+                        El planeta rojo, famoso por sus valles y volcanes gigantes, posible futuro hogar humano.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Júpiter -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://static.vecteezy.com/system/resources/previews/044/809/310/non_2x/jupiter-isolated-on-transparent-background-png.png"
+                            alt="Júpiter"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Júpiter</h3>
+                    <p class="planet-description">
+                        El gigante gaseoso más grande del sistema solar, con la icónica Gran Mancha Roja.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Saturno -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://static.vecteezy.com/system/resources/previews/057/358/853/non_2x/saturn-planet-wallpaper-hd-free-png.png"
+                            alt="Saturno"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Saturno</h3>
+                    <p class="planet-description">
+                        Conocido por sus impresionantes anillos, Saturno es un gigante gaseoso lleno de misterios.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Urano -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://spaceplace.nasa.gov/review/uranus/neptune.png"
+                            alt="Urano"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Urano</h3>
+                    <p class="planet-description">
+                        Un gigantesco planeta helado que gira de lado y tiene un tono azul verdoso característico.
+                    </p>
+                </figcaption>
+            </figure>
+
+            <!-- Neptuno -->
+            <figure class="planet-card">
+                <div class="planet-img-wrapper">
+                    <img
+                            src="https://png.pngtree.com/png-clipart/20240416/original/pngtree-beautiful-planet-neptune-png-image_14861431.png"
+                            alt="Neptuno"
+                            class="planet-img"
+                    />
+                </div>
+                <figcaption class="planet-info">
+                    <h3 class="planet-name">Neptuno</h3>
+                    <p class="planet-description">
+                        Planeta azul profundo con vientos extremadamente fuertes y un sistema de anillos sutil.
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Planetario. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
